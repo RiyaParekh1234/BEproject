@@ -6,6 +6,8 @@
 4. Pre-trained model (trained_heartbeat_classifier.h5)
 5. A python script (testing.py)
 
+6. Modified DL Model folder
+
 ## To run the code locally:
 1. Download the folder
 2. Open the terminal/command prompt and cd to the downloaded repository
