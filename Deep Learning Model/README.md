@@ -12,7 +12,9 @@
 ## To run the code locally:
 1. Download the folder
 2. Open the terminal/command prompt and cd to the downloaded repository
-3. Run the python script "testing_folder.py"
+3. Run the python script 
+        --> "testing.py" (for testing single recording)
+        --> "testing_folder.py" (for testing multiple recordings)
         
         """ python testing.py heartbeat-to-classify.wav"""
         
