@@ -11,7 +11,7 @@
 ## To run the code locally:
 1. Download the folder
 2. Open the terminal/command prompt and cd to the downloaded repository
-3. Run the python script "testing.py"
+3. Run the python script "testing_folder.py"
         
         """ python testing.py heartbeat-to-classify.wav"""
         
