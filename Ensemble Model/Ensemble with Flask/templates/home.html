@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block title %} Dashboard {% endblock %}
+
+{% block content %}
+<h2>Dashboard</h2>
+<p>Welcome back, {{ username }}!</p>
+
+<h2>Upload a folder here</h2><br>
+    <form method="POST" enctype="multipart/form-data">
+    <input type="file"  name="files" multiple="true" autocomplete="off" required/>
+    <br>
+    <input type="text" name="folder" required/>
+    <input type="submit" class="button_black buttons"  value="Process"/>
+    </form>
+
+    <h5>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <p class="result">Results</p>
+          <ul class="flashes">
+              {% for message in messages %}
+              <li>{{ message | safe }}</li>
+              {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+        </h5>
+{% endblock %}
