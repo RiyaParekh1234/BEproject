@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block title %} Dashboard {% endblock %}
+
+{% block content %} 
+<h2>Dashboard</h2>
+<p>Welcome back, {{ username }}!</p>
+
+<h2>Upload a folder here</h2>
+    <form method="POST" enctype="multipart/form-data">
+    <!--<input type="file"  name="files" multiple="true" autocomplete="off" required/>-->
+    <div id="res" style="visibility: hidden;color: azure;">Result is being calculated:</div>
+    <div class="progress" id="myProgress" style="visibility: hidden;">
+      <div class="color" id="myBar"></div>
+    </div><br>
+    <div class="file-input"> 
+      <input type="file" id="file" class="file" name="files" multiple="true" autocomplete="off" size="60" required >
+      <label for="file">Select file <br><p class="file-name"></p> </label>
+    </div> 
+    <br><br>
+    <input type="text" class="filename" name="folder" autocomplete="off" placeholder="Enter file name" required/>
+    <input type="submit" class="button_black buttons" onclick="tempf()" value="Process"/>
+    </form>
+    
+
+    <h5>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <p class="result">Final Predictions</p>
+          <ul class="flashes">
+              {% for message in messages %}
+              <li>{{ message | safe }}</li>
+              {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+        </h5>
+  
+  <script>
+    const file = document.querySelector('#file');
+    file.addEventListener('change', (e) => {
+          // Get the selected file
+    const [file] = e.target.files;
+          // Get the file name and size
+    const { name: fileName, size } = file;
+          // Convert size in bytes to kilo bytes
+    //const fileSize = (size / 1000).toFixed(2);
+          // Set the text content
+    //const fileNameAndSize = `${fileName} - ${fileSize}KB`;
+    const fileNameAndSize = 'Files uploaded successfully!';
+    document.querySelector('.file-name').textContent = fileNameAndSize;
+    }); 
+
+    function tempf(){
+      //print('Calculating Results:');
+      var prog = document.getElementById('myBar');
+      var prog1 = document.getElementById('res');
+      prog.style.visibility = 'visible';
+      prog1.style.visibility = 'visible';
+      move()
+    }
+    var i = 0;
+    function move() {   
+      //var prog = document.getElementById('myBar');
+      if (i == 0) {
+        i = 1;
+        //prog.style.visibility = 'visible';
+        var elem = document.getElementById("myBar");
+        var width = 1;
+        var id = setInterval(frame, 90);
+        function frame() {
+          if (width >= 100) {
+            clearInterval(id);
+            i = 0;
+          } else {
+            width++;  
+            elem.style.width = width + "%";
+          }
+        }
+      }
+    }
+  </script>      
+{% endblock %}
